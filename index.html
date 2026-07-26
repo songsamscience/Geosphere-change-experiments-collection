@@ -180,7 +180,10 @@ h1 .accent{
 
 /* 카드 */
 .card{
-  display:block;
+  display:grid;
+  grid-template-columns:78px 1fr;
+  gap:20px;
+  align-items:start;
   background:var(--white);
   border:1.5px solid var(--line);
   border-left:5px solid var(--c);
@@ -195,6 +198,23 @@ h1 .accent{
   border-left-color:var(--c);
 }
 .layer:hover .chip{transform:scale(1.07) rotate(-4deg)}
+
+/* 실험 아이콘 */
+.card-art{
+  width:78px;height:78px;
+  border-radius:15px;
+  color:var(--c);
+  background:#F4F8FB;
+  background:color-mix(in srgb,var(--c) 9%,#fff);
+  border:1px solid #E4EDF4;
+  border-color:color-mix(in srgb,var(--c) 26%,#fff);
+  display:grid;place-items:center;
+  flex:none;
+  transition:transform .22s ease;
+}
+.card-art svg{width:54px;height:54px;display:block}
+.card:hover .card-art{transform:rotate(-3deg) scale(1.05)}
+.card-body{min-width:0}
 
 .card-top{
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
@@ -278,7 +298,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
   .layer{grid-template-columns:48px 1fr;gap:14px}
   .chip{width:34px;height:34px;border-radius:10px;font-size:.9rem}
   .rock{width:10px}
-  .card{padding:18px 18px}
+  .card{padding:18px 16px;grid-template-columns:54px 1fr;gap:13px}
+  .card-art{width:54px;height:54px;border-radius:12px}
+  .card-art svg{width:38px;height:38px}
   .card h3{font-size:1.15rem}
   footer .wrap{flex-direction:column}
 }
@@ -334,6 +356,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
     <article class="layer" style="--c:var(--s1)">
       <div class="marker"><div class="chip">01</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/earth-system-game/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.7">
+              <circle cx="25" cy="25" r="14"/><circle cx="39" cy="25" r="14"/>
+              <circle cx="25" cy="39" r="14"/><circle cx="39" cy="39" r="14"/>
+            </g>
+            <circle cx="32" cy="32" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">지구계</span><span class="date">2026.4.10. 공개</span></div>
         <h3>지구계 활동 놀이</h3>
         <p>지권·수권·기권·생물권이 서로 주고받는 관계를 직접 연결하며 지구계의 구성 요소를 익힙니다.</p>
@@ -341,12 +373,25 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
         </div>
+        </div>
       </a>
     </article>
 
     <article class="layer" style="--c:var(--s2)">
       <div class="marker"><div class="chip">02</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/Layered-structure-of-the-Earth/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="1.7" fill="currentColor">
+              <circle cx="32" cy="32" r="26" fill-opacity=".10"/>
+              <circle cx="32" cy="32" r="19" fill-opacity=".16"/>
+              <circle cx="32" cy="32" r="11" fill-opacity=".32"/>
+              <circle cx="32" cy="32" r="5" fill-opacity=".7"/>
+            </g>
+            <path d="M32 32 51 19" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">지구 내부</span><span class="date">2026.4.12. 공개</span></div>
         <h3>지구의 층상 구조</h3>
         <p>지각·맨틀·외핵·내핵의 두께와 상태를 비교하며, 지구 내부가 어떻게 나뉘는지 살펴봅니다.</p>
@@ -354,12 +399,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
         </div>
+        </div>
       </a>
     </article>
 
     <article class="layer" style="--c:var(--s3)">
       <div class="marker"><div class="chip">03</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/mineral-experiment/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+              <path d="M32 6 46 20 40 40 24 40 18 20Z" fill="currentColor" fill-opacity=".22"/>
+              <path d="M32 6 40 40M32 6 24 40M18 20h28" fill="none" stroke-width="1.2" opacity=".55"/>
+              <rect x="11" y="46" width="42" height="12" rx="3" fill="currentColor" fill-opacity=".1"/>
+              <path d="M19 54 34 49" fill="none" stroke-width="2.8" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">광물</span><span class="date">2026.5.2. 공개</span></div>
         <h3>광물의 특성 실험</h3>
         <p>색과 조흔색, 굳기, 묽은 염산 반응을 차례로 확인하며 광물을 구별하는 기준을 세웁니다.</p>
@@ -367,12 +424,28 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
         </div>
+        </div>
       </a>
     </article>
 
     <article class="layer" style="--c:var(--s4)">
       <div class="marker"><div class="chip">04</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/Minerals-and-Rocks-Memory-Card-Game/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+              <g transform="rotate(-10 21 33)">
+                <rect x="9" y="16" width="24" height="34" rx="4" fill="currentColor" fill-opacity=".22"/>
+                <path d="M15 26h12M15 33h12M15 40h8" fill="none" stroke-width="1.4" opacity=".55"/>
+              </g>
+              <g transform="rotate(9 43 31)">
+                <rect x="31" y="14" width="24" height="34" rx="4" fill="#fff"/>
+                <path d="M37 39c-2.5-7 1.5-13 6-13s8.5 6 6 13z" fill="currentColor" fill-opacity=".38" stroke-width="1.6"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">광물·암석</span><span class="date">2026.5.17. 공개</span></div>
         <h3>광물·암석 메모리 게임</h3>
         <p>이름과 사진을 짝지어 뒤집는 카드 게임으로, 배운 광물과 암석을 눈에 익힙니다.</p>
@@ -380,12 +453,28 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
         </div>
+        </div>
       </a>
     </article>
 
     <article class="layer" style="--c:var(--s5)">
       <div class="marker"><div class="chip">05</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/soil-formation-experiment/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M21 9 34 5 44 13 40 24 24 26 15 18Z" fill="currentColor" fill-opacity=".34"/>
+              <path d="M31 6 28 16l8 2-3 7" fill="none" stroke-width="1.3" opacity=".6"/>
+              <path d="M48 25l5 3-2 5-5-2z" fill="currentColor" fill-opacity=".45" stroke-width="1.3"/>
+              <path d="M9 27l5 2-1 5-5-2z" fill="currentColor" fill-opacity=".45" stroke-width="1.3"/>
+              <path d="M32 39v-6M32 35c-4 0-5-4-5-4s5-1 5 4z" fill="currentColor" fill-opacity=".5" stroke-width="1.4"/>
+              <rect x="7" y="39" width="50" height="6" rx="1.5" fill="currentColor" fill-opacity=".55"/>
+              <rect x="7" y="45" width="50" height="6" rx="1.5" fill="currentColor" fill-opacity=".32"/>
+              <rect x="7" y="51" width="50" height="7" rx="1.5" fill="currentColor" fill-opacity=".14"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">풍화·토양</span><span class="date">2026.6.6. 공개</span></div>
         <h3>풍화와 토양의 생성과정 실험</h3>
         <p>암석이 잘게 부서지고 토양층이 차례로 쌓이는 과정을 시간에 따라 관찰합니다.</p>
@@ -393,18 +482,34 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
         </div>
+        </div>
       </a>
     </article>
 
     <article class="layer" style="--c:var(--s6)">
       <div class="marker"><div class="chip">06</div><div class="rock"></div></div>
       <a class="card" href="https://songsamscience.github.io/Continental-drift/" target="_blank" rel="noopener">
+        <div class="card-art">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+              <path d="M8 16h22v10a6 6 0 0 1 0 12v10H8z" fill="currentColor" fill-opacity=".34"/>
+              <path d="M40 16h16v32H40V38a6 6 0 0 0 0-12z" fill="currentColor" fill-opacity=".16"/>
+            </g>
+            <g fill="currentColor" opacity=".8">
+              <circle cx="17" cy="24" r="2.2"/><circle cx="19" cy="41" r="2.2"/>
+              <circle cx="48" cy="24" r="2.2"/><circle cx="50" cy="41" r="2.2"/>
+            </g>
+            <path d="M35 12v40" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="card-body">
         <div class="card-top"><span class="tag">대륙이동설</span><span class="date">2026.6.7. 공개</span></div>
         <h3>대륙 맞추기 실험 (대륙이동설)</h3>
         <p>흩어진 대륙 조각을 맞춰 보고, 해안선과 화석·지질 증거로 대륙이 이어져 있었음을 확인합니다.</p>
         <div class="card-foot">
           <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           <button class="copy" type="button">링크 복사</button>
+        </div>
         </div>
       </a>
     </article>
