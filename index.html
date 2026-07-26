@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지권의 변화 · 송쌤과학 가상실험 모음 (중2 2단원)</title>
+<meta name="description" content="2022 개정 교육과정 중학교 2학년 과학 2단원 '지권의 변화' 가상실험 6종 모음. 송쌤과학.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --blue:#0F6FB8;
+  --blue-deep:#0A3F6B;
+  --ink:#12283C;
+  --ink-soft:#5C7288;
+  --pink:#FFB7B2;
+  --line:#DCE7F0;
+  --surface:#F2F7FB;
+  --white:#fff;
+
+  /* 지층 색 — 각 실험의 지질학적 주제에서 가져옴 */
+  --s1:#57B6E0;  /* 지구계: 수권·기권의 하늘빛 */
+  --s2:#E2703A;  /* 층상 구조: 맨틀의 열 */
+  --s3:#7B68C4;  /* 광물: 결정 */
+  --s4:#B05B4A;  /* 암석: 적갈색 퇴적층 */
+  --s5:#8A6A3C;  /* 풍화와 토양: 흙 */
+  --s6:#2F8F6B;  /* 대륙이동: 대륙 */
+
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+/* ── 헤더 ─────────────────────────────── */
+.hero{
+  position:relative;
+  padding:64px 0 52px;
+  background:linear-gradient(180deg,var(--surface) 0%,#fff 100%);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-globe{
+  position:absolute;right:-90px;top:-70px;
+  width:340px;height:340px;
+  opacity:.5;
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;font-weight:700;letter-spacing:.02em;
+  color:var(--blue);
+  background:rgba(15,111,184,.08);
+  border:1px solid rgba(15,111,184,.18);
+  padding:6px 13px;border-radius:999px;
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Jua',sans-serif;
+  font-size:clamp(2.5rem,7vw,4rem);
+  line-height:1.12;
+  color:var(--blue-deep);
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+h1 .accent{
+  background:linear-gradient(transparent 62%,var(--pink) 62%);
+}
+.hero-sub{
+  margin-top:14px;
+  font-size:1.05rem;color:var(--ink-soft);
+  max-width:34em;
+}
+.brandline{
+  margin-top:6px;
+  font-family:'Jua',sans-serif;
+  font-size:1.1rem;color:var(--blue);
+}
+
+/* 소셜 */
+.social{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:26px;
+}
+.social a{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:9px 16px 9px 13px;
+  border:1.5px solid var(--line);
+  border-radius:999px;
+  background:var(--white);
+  font-size:.92rem;font-weight:600;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.social a:hover{
+  transform:translateY(-2px);
+  border-color:var(--blue);
+  box-shadow:0 6px 16px rgba(15,111,184,.12);
+}
+.social svg{width:19px;height:19px;flex:none}
+.social .yt svg{fill:#FF0033}
+.social .ig svg{fill:#D6249F}
+.social .handle{color:var(--ink-soft);font-weight:500}
+
+/* ── 지층 코어 ─────────────────────────── */
+.strata{padding:56px 0 24px}
+.strata-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  margin-bottom:34px;
+  padding-bottom:14px;
+  border-bottom:2px solid var(--ink);
+}
+.strata-head h2{
+  font-family:'Jua',sans-serif;font-weight:400;
+  font-size:1.5rem;color:var(--ink);
+}
+.strata-head .count{font-size:.88rem;color:var(--ink-soft);font-weight:600}
+
+.core{position:relative}
+/* 코어 축 */
+.core::before{
+  content:"";position:absolute;
+  left:31px;top:12px;bottom:34px;
+  width:2px;
+  background:linear-gradient(180deg,var(--line),var(--line) 92%,transparent);
+}
+
+.layer{
+  position:relative;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:20px;
+  margin-bottom:16px;
+  opacity:0;
+  transform:translateY(14px);
+  animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.layer:nth-child(1){animation-delay:.05s}
+.layer:nth-child(2){animation-delay:.13s}
+.layer:nth-child(3){animation-delay:.21s}
+.layer:nth-child(4){animation-delay:.29s}
+.layer:nth-child(5){animation-delay:.37s}
+.layer:nth-child(6){animation-delay:.45s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* 코어 마커 */
+.marker{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;
+  padding-top:22px;
+}
+.chip{
+  width:44px;height:44px;border-radius:12px;
+  display:grid;place-items:center;
+  font-family:'Jua',sans-serif;font-size:1.05rem;
+  color:#fff;
+  background:var(--c);
+  box-shadow:0 3px 0 rgba(0,0,0,.12) inset, 0 4px 12px rgba(18,40,60,.16);
+  transition:transform .2s ease;
+}
+.rock{
+  width:14px;flex:1;margin-top:8px;min-height:26px;
+  border-radius:4px;
+  background:repeating-linear-gradient(180deg,var(--c) 0 5px,rgba(255,255,255,.45) 5px 7px);
+  opacity:.55;
+}
+
+/* 카드 */
+.card{
+  display:block;
+  background:var(--white);
+  border:1.5px solid var(--line);
+  border-left:5px solid var(--c);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card:hover,.card:focus-visible{
+  transform:translateX(4px);
+  box-shadow:0 10px 26px rgba(18,40,60,.10);
+  border-color:var(--line);
+  border-left-color:var(--c);
+}
+.layer:hover .chip{transform:scale(1.07) rotate(-4deg)}
+
+.card-top{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-bottom:7px;
+}
+.tag{
+  font-size:.72rem;font-weight:700;letter-spacing:.03em;
+  color:var(--c);
+  background:color-mix(in srgb,var(--c) 12%,white);
+  padding:3px 9px;border-radius:6px;
+}
+.date{font-size:.78rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.card h3{
+  font-family:'Jua',sans-serif;font-weight:400;
+  font-size:1.32rem;line-height:1.3;color:var(--ink);
+}
+.card p{
+  margin-top:7px;
+  font-size:.94rem;color:var(--ink-soft);
+}
+.card-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin-top:16px;flex-wrap:wrap;
+}
+.go{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.9rem;font-weight:700;color:var(--blue);
+}
+.go svg{width:15px;height:15px;transition:transform .2s ease}
+.card:hover .go svg{transform:translate(2px,-2px)}
+.copy{
+  font-family:inherit;font-size:.82rem;font-weight:600;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:6px 12px;cursor:pointer;
+  transition:background .15s ease,color .15s ease;
+}
+.copy:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.copy.done{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+
+/* 안내 */
+.note{
+  margin:34px 0 0;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 22px;
+  font-size:.9rem;color:var(--ink-soft);
+}
+.note strong{color:var(--ink)}
+
+/* ── 푸터 ─────────────────────────────── */
+footer{
+  margin-top:56px;
+  background:var(--blue-deep);
+  color:#CFE2F1;
+  padding:40px 0 34px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+.f-brand{font-family:'Jua',sans-serif;font-size:1.35rem;color:#fff}
+.f-brand span{color:var(--pink)}
+.f-copy{margin-top:8px;font-size:.85rem;line-height:1.8}
+.f-copy .rights{color:#8FB4CE}
+.f-social{display:flex;gap:10px}
+.f-social a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  font-size:.86rem;font-weight:600;color:#fff;
+  transition:background .18s ease;
+}
+.f-social a:hover{background:rgba(255,255,255,.14)}
+.f-social svg{width:17px;height:17px;fill:#fff}
+
+@media (max-width:640px){
+  .hero{padding:44px 0 40px}
+  .hero-globe{width:230px;height:230px;right:-70px;top:-50px;opacity:.35}
+  .core::before{left:23px}
+  .layer{grid-template-columns:48px 1fr;gap:14px}
+  .chip{width:34px;height:34px;border-radius:10px;font-size:.9rem}
+  .rock{width:10px}
+  .card{padding:18px 18px}
+  .card h3{font-size:1.15rem}
+  footer .wrap{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .layer{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <!-- 지구 층상 구조 단면 -->
+  <svg class="hero-globe" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="96" fill="#57B6E0" opacity=".28"/>
+    <circle cx="100" cy="100" r="74" fill="#E2703A" opacity=".30"/>
+    <circle cx="100" cy="100" r="44" fill="#F0A93C" opacity=".45"/>
+    <circle cx="100" cy="100" r="21" fill="#C24B36" opacity=".55"/>
+    <g stroke="#0A3F6B" stroke-opacity=".28" fill="none" stroke-width="1">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="74"/>
+      <circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="21"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <span class="eyebrow">2022 개정 교육과정 · 중학교 2학년 과학</span>
+    <h1>2단원 <span class="accent">지권의 변화</span></h1>
+    <p class="brandline">송쌤과학 가상실험 모음</p>
+    <p class="hero-sub">지구계에서 출발해 지구 내부로 내려갔다가, 광물과 암석을 지나 다시 지표의 토양과 대륙까지. 수업 순서대로 쌓아 둔 여섯 개의 가상실험입니다.</p>
+
+    <nav class="social" aria-label="송쌤과학 채널">
+      <a class="yt" href="https://www.youtube.com/@songsamscience" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+        유튜브 <span class="handle">@songsamscience</span>
+      </a>
+      <a class="ig" href="https://www.instagram.com/songsamscience" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.68.8.9 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.5 1-.9 1.4-.4.4-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.5-1.4-.9-.4-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .9-1.4.4-.4.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.15A6.65 6.65 0 1 0 18.65 12 6.65 6.65 0 0 0 12 5.35zm0 10.97A4.32 4.32 0 1 1 16.32 12 4.32 4.32 0 0 1 12 16.32zm6.9-11.2a1.55 1.55 0 1 1-1.55-1.56 1.55 1.55 0 0 1 1.55 1.56z"/></svg>
+        인스타그램 <span class="handle">@songsamscience</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap strata">
+  <div class="strata-head">
+    <h2>수업 순서로 보는 실험</h2>
+    <span class="count">전체 6개</span>
+  </div>
+
+  <div class="core">
+
+    <article class="layer" style="--c:var(--s1)">
+      <div class="marker"><div class="chip">01</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/earth-system-game/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">지구계</span><span class="date">2026.4.10. 공개</span></div>
+        <h3>지구계 활동 놀이</h3>
+        <p>지권·수권·기권·생물권이 서로 주고받는 관계를 직접 연결하며 지구계의 구성 요소를 익힙니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+    <article class="layer" style="--c:var(--s2)">
+      <div class="marker"><div class="chip">02</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/Layered-structure-of-the-Earth/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">지구 내부</span><span class="date">2026.4.12. 공개</span></div>
+        <h3>지구의 층상 구조</h3>
+        <p>지각·맨틀·외핵·내핵의 두께와 상태를 비교하며, 지구 내부가 어떻게 나뉘는지 살펴봅니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+    <article class="layer" style="--c:var(--s3)">
+      <div class="marker"><div class="chip">03</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/mineral-experiment/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">광물</span><span class="date">2026.5.2. 공개</span></div>
+        <h3>광물의 특성 실험</h3>
+        <p>색과 조흔색, 굳기, 묽은 염산 반응을 차례로 확인하며 광물을 구별하는 기준을 세웁니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+    <article class="layer" style="--c:var(--s4)">
+      <div class="marker"><div class="chip">04</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/Minerals-and-Rocks-Memory-Card-Game/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">광물·암석</span><span class="date">2026.5.17. 공개</span></div>
+        <h3>광물·암석 메모리 게임</h3>
+        <p>이름과 사진을 짝지어 뒤집는 카드 게임으로, 배운 광물과 암석을 눈에 익힙니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+    <article class="layer" style="--c:var(--s5)">
+      <div class="marker"><div class="chip">05</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/soil-formation-experiment/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">풍화·토양</span><span class="date">2026.6.6. 공개</span></div>
+        <h3>풍화와 토양의 생성과정 실험</h3>
+        <p>암석이 잘게 부서지고 토양층이 차례로 쌓이는 과정을 시간에 따라 관찰합니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+    <article class="layer" style="--c:var(--s6)">
+      <div class="marker"><div class="chip">06</div><div class="rock"></div></div>
+      <a class="card" href="https://songsamscience.github.io/Continental-drift/" target="_blank" rel="noopener">
+        <div class="card-top"><span class="tag">대륙이동설</span><span class="date">2026.6.7. 공개</span></div>
+        <h3>대륙 맞추기 실험 (대륙이동설)</h3>
+        <p>흩어진 대륙 조각을 맞춰 보고, 해안선과 화석·지질 증거로 대륙이 이어져 있었음을 확인합니다.</p>
+        <div class="card-foot">
+          <span class="go">실험 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <button class="copy" type="button">링크 복사</button>
+        </div>
+      </a>
+    </article>
+
+  </div>
+
+  <p class="note"><strong>수업에서 쓰는 방법</strong> — 모든 실험은 설치 없이 브라우저에서 바로 열립니다. 디벗 태블릿에서는 링크 복사를 눌러 학급 게시판이나 채팅방에 붙여 넣으면 학생들이 한 번에 접속할 수 있습니다.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="f-brand">송쌤<span>과학</span></p>
+      <p class="f-copy">
+        © 2026 송쌤과학(송세호). All rights reserved.<br>
+        <span class="rights">이 사이트와 수록된 가상실험의 저작권은 송쌤과학에 있습니다.<br>
+        수업 목적의 활용은 자유롭게 하실 수 있으며, 무단 복제·수정·재배포는 금합니다.</span>
+      </p>
+    </div>
+    <nav class="f-social" aria-label="송쌤과학 채널">
+      <a href="https://www.youtube.com/@songsamscience" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>유튜브</a>
+      <a href="https://www.instagram.com/songsamscience" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.68.8.9 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.5 1-.9 1.4-.4.4-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.5-1.4-.9-.4-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .9-1.4.4-.4.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.15A6.65 6.65 0 1 0 18.65 12 6.65 6.65 0 0 0 12 5.35zm0 10.97A4.32 4.32 0 1 1 16.32 12 4.32 4.32 0 0 1 12 16.32zm6.9-11.2a1.55 1.55 0 1 1-1.55-1.56 1.55 1.55 0 0 1 1.55 1.56z"/></svg>인스타그램</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var url = btn.closest('.card').href;
+    var done = function(){
+      var old = btn.textContent;
+      btn.textContent = '복사 완료';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var t = document.createElement('textarea');
+      t.value = url; t.style.position='fixed'; t.style.opacity='0';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); }
+      catch(err){ btn.textContent = '복사 실패'; }
+      document.body.removeChild(t);
+    }
+  });
+});
+</script>
+</body>
+</html>
